@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb_container_user
+    ports:
+      - "27018:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: rootuser
+      MONGO_INITDB_ROOT_PASSWORD: rootpass
+    volumes:
+      - mongodb_data_container:/data/db
+  mongodb_csv:
+    image: mongo:latest
+    container_name: mongodb_container_csv
+    ports:
+      - "27019:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: rootuser2
+      MONGO_INITDB_ROOT_PASSWORD: rootpass2
+    volumes:
+      - mongodb_data_container_csv:/data/db
+volumes:
+  mongodb_data_container:
+  mongodb_data_container_csv:

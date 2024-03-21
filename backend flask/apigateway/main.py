@@ -19,23 +19,23 @@ def microservice(microservice):
     if request.method == "GET":
 
         if microservice == "authorization":
-            # response = requests.get('http://127.0.0.1:5002')
             response = requests.post('http://127.0.0.1:5002')
-            if response.status_code == 200:
+
+            if response.status_code == 201:
                 data = response.json()
             else:
                 return "invalid request", 404
         elif microservice == "training":
-            # response = requests.get('http://127.0.0.1:5001')
-            response = requests.post('http://127.0.0.1:5002')
+            response = requests.get('http://127.0.0.1:5001')
+
             if response.status_code == 200:
                 data = response.json()
             else:
                 return "invalid request", 404
 
         elif microservice == "datahandling":
-            # response = requests.get('http://127.0.0.1:5003')
-            response = requests.post('http://127.0.0.1:5002')
+            response = requests.get('http://127.0.0.1:5003')
+
             if response.status_code == 200:
                 data = response.json()
             else:
